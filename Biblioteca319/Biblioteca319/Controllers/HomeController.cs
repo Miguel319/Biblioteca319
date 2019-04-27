@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Biblioteca319.Models;
 using Microsoft.AspNetCore.Mvc;
-using Biblioteca319.Models;
+using System.Diagnostics;
 
 namespace Biblioteca319.Controllers
 {

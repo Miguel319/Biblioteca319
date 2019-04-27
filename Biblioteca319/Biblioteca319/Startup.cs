@@ -1,4 +1,5 @@
-﻿using Biblioteca.DAL;
+﻿using Biblioteca.BLL;
+using Biblioteca.DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -29,7 +30,14 @@ namespace Biblioteca319
             });
 
 
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddSingleton(Configuration);
+
+            #region Servicios BLL
+            services.AddScoped<IActivo, ActivoServicio>();
+            services.AddScoped<IEstatus, EstatusServicio>();
+            #endregion
 
 
             services.AddDbContext<BibliotecaContext>(opciones =>

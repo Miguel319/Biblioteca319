@@ -1,0 +1,39 @@
+﻿@model Biblioteca319.Models.Catalogo.ActivoModel
+
+@{
+    ViewData["Title"] = "Activos";
+}
+
+<div id="activos">
+    <h3 class="text-center">Catálogo</h3>
+    
+    <div id="activosTabla">
+        <table class="table table-hover table-bordered table-responsive" id="catalogoTabla">
+            <thead>
+            <tr>
+                <th>Imagen</th>
+                <th>Título</th>
+                <th>Autor / Director</th>
+                <th>Índice Dewey</th>
+            </tr>
+            </thead>
+            <tbody>
+                @foreach (var activo in Model.Activos)
+                {
+                <tr class="activoRegistro">
+                    <td class="">
+                        <a asp-controller="Catalogo"
+                           asp-action="Detalles" asp-route-id="@activo.Id" A>
+                            <img src="@activo.ImagenUrl" class="imagenCelda"/>
+
+                        </a>
+                    </td>
+                    <td class="">@activo.Titulo</td>
+                    <td class="">@activo.AutorODirector</td>
+                    <td class="">@activo.IndiceDewey</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
