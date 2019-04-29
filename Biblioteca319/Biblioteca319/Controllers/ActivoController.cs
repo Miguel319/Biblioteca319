@@ -1,9 +1,7 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using Biblioteca.DAL;
+﻿using Biblioteca.DAL;
 using BibliotecaBOL;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Threading.Tasks;
 
 namespace Biblioteca319.Controllers
 {
@@ -25,7 +23,6 @@ namespace Biblioteca319.Controllers
                 await _obj.Agregar(activo);
                 return RedirectToAction("Index");
             }
-
             return View();
         }
 
@@ -37,6 +34,7 @@ namespace Biblioteca319.Controllers
 
             return View(await _obj.ObtenerPorId(id));
         } 
+
         [HttpPost]
         public async Task<IActionResult> Editar(Activo activo)
         {
@@ -47,6 +45,5 @@ namespace Biblioteca319.Controllers
             }
             return View();
         }
-
     }
 }

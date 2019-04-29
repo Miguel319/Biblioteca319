@@ -54,3 +54,190 @@ body {
   height: 60px;
   line-height: 60px; /* Vertically center the text there */
 }
+
+
+.logo {
+    font-family: "Coda";
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+.logo > a {
+    color: #ddd;
+    text-decoration: none;
+    transition-duration: 0.5s;
+}
+
+logo >:hover {
+    color: #fff;
+    transition: ease;
+    text-decoration: none;
+    transition-duration: 0.5s;
+}
+
+
+.pagina-contenido {
+    padding: 20px;
+    margin: 10px auto;
+}
+
+.pagina-heading {
+    color: #e9e8e7;
+}
+
+.splash {
+    background-image: "url(*/img/catalogo.png)";
+    background-repeat: no-repeat;
+    min-height: 200px;
+}
+
+
+.card-icon Ny {
+    color: #777;
+    font-size: 40px;
+    padding: 24px;
+    -webkit-border-radius: 1100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    vertical-align: middle;
+    width: 60px;
+    height: 60px;
+    -moz-transition: .5s;
+    -webkit-transition: .5s;
+    -o-transition: .5s;
+    transition: .5s;
+}
+
+.icono-wrapper {
+    display: table-cell;
+}
+
+.demo-card-square.mdl-card {
+    width: 320px;
+    height: 320px;
+}
+
+.demo-card.square > mdl-card__title {
+    color: #fff;
+}
+
+.homeLabel {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 4px;
+}
+
+#catalogo {
+    background: url('/img/libros.png') bottom right 15% no-repeat #555;
+}
+
+#catalogoTabla {
+    font-size: 1.3em;
+}
+
+#catalogoTabla td {
+    vertical-align: middle;
+}
+
+#catalogoTabla tr:hover {
+    background-color: #eee;
+}
+
+#clientes {
+    background: url('img/cliente.png') bottom left 15% no-repeat #555;
+}
+
+.sucursalInfo {
+    padding-top: 30px;
+}
+
+#sucursales {
+    background: url('img/sucursales.png') bottom right 15% no-repeat #555;
+}
+
+#activos {
+    margin: 0 auto;
+}
+
+.tablaPersonalizada td {
+    text-align: left;
+    font-size: 1.2em;
+}
+
+.negritaId {
+    font-weight: bold;
+}
+
+.tablaPersonalizada th {
+    text-align: left;
+    color: rgb(0, 0, 0);
+    font-size: 1.3em;
+}
+
+.imagenCelda {
+    width: 128px;
+    padding: 10px;
+}
+
+#activosCelda td {
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.autorLbl {
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+.tituloLbl {
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+#articuloTitulo {
+    font-size: 1.6em;
+}
+
+#articuloEstatus {
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+#articuloTipo {
+    font-size: 1.6em;
+    color: #888;
+}
+
+.articuloLbl {
+    font-weight:bold
+}
+
+.articuloValor {
+    text-align: right;
+    font-size: 0.8em;
+}
+
+.detallaInfo {
+    padding: 10px;
+    font-size: 1.3em;
+    color: #555;
+}
+
+.detalleHeading {
+    padding: 10px;
+}
+
+#sucursalDescripcion {
+    width: 500px;
+    padding: 18px;
+}
+
+.sucursalContacto {
+    padding: 12px 0 16px 0;
+    font-size: 1.2em;
+}
+
+#clienteTieneCargos {
+    color: #c62222;
+    font-weight: bold;
+}

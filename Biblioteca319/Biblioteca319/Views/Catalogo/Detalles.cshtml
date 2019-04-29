@@ -1,0 +1,79 @@
+﻿@model Biblioteca319.Models.Catalogo.ActivoDetalleModel
+
+
+@{
+    ViewData["Title"] = "Detalles";
+}
+
+
+<div class="container">
+    <div class="pagina-header clearfix detalleHeading ">
+        <h2 class="text-muted">Ver artículo de librería</h2>
+    </div>
+</div>
+
+
+<div class="jumbotron">
+    
+<div class="row">
+    <div class="col-md-4">
+        <div>
+            <img class="detalleImagen" src="@Model.ImagenUrl" />
+        </div>
+    </div>
+    <div class="col-md-4">
+        <p id="articuloTitulo">@Model.Titulo</p>
+        <p id="articuloAutor">@Model.AutorODirector</p>
+        <p id="articuloEstatus">@Model.Estatus</p>
+        <p id="articuloTipo">@Model.Tipo</p>
+        <p id="articuloUbicacion">@Model.UbicacionActual</p>
+
+
+        @if (Model.Estatus == "Perdido")
+        {
+            <p>Este artículo está perdido. No puede ser comprado</p>
+            <p><a class="btn btn-lg btn-danger" role="button" asp-controller="Catalogo"
+                  asp-action="MarcarEncontrado" asp-route-id="@Model.Id">Marcar como encontrado</a></p>
+        }
+
+        @if (Model.Estatus == "Pago")
+        {
+            <p id="articuloCliente">Pagado por: @Model.NombreCliente</p>
+            <p>
+                <a class="btn btn-lg btn-success" role="button" asp-controller="Catalogo"
+                   asp-action="Facturar" asp-route-id="@Model.Id">Facturar</a>
+            </p>
+            <p>
+                <a class="btn btn-lg btn-info" role="button" asp-controller="Catalogo"
+                   asp-action="Congelar" asp-route-id="@Model.Id">Congelar</a>
+            </p>
+
+        }
+
+
+        @if (Model.Estatus == "Disponible")
+        {
+            <p>
+                <a class="btn btn-lg btn-info" role="button" asp-controller="Catalogo"
+                   asp-action="Pagar" asp-route-id="@Model.Id">Pagar</a>
+            </p>
+        }
+    </div>
+        <div class="col-md-4 detallaInfo">
+            <table>
+                <tr>
+                    <td class="articuloLbl">ISBN: </td>
+                    <td class="articuloValor">@Model.ISBN</td>
+                </tr>
+                <tr>
+                    <td class="articuloLbl">Índice Dewey: </td>
+                    <td class="articuloValor">@Model.IndiceDewey</td>
+                </tr>
+                <tr>
+                    <td class="articuloLbl">Costo: </td>
+                    <td class="articuloValor">@Model.Costo</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 ﻿namespace Biblioteca319.Models.Catalogo
 {
-    public class ActivoListadoModel
+    public class ActivoIndexModel
     {
         public int Id { get; set; }
         public string ImagenUrl { get; set; }

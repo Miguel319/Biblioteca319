@@ -6,6 +6,5 @@ namespace BibliotecaBOL
     {
         [Required]
         public string Director { get; set; }
-
     }
 }
