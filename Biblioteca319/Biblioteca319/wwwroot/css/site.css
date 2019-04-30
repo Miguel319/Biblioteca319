@@ -43,7 +43,14 @@ html {
 
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
+  /*margin-bottom: 60px;*/
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
 }
 .footer {
   position: absolute;
@@ -57,7 +64,7 @@ body {
 
 
 .logo {
-    font-family: "Coda";
+    font-family: 'Crimson Text', serif;
     font-size: 1.8em;
     font-weight: bold;
 }
@@ -79,6 +86,14 @@ logo >:hover {
 .pagina-contenido {
     padding: 20px;
     margin: 10px auto;
+}
+
+h1, h2 {
+    font-family: 'Amaranth', sans-serif;
+}
+
+p {
+    font-family: 'Lateef', cursive;
 }
 
 .pagina-heading {

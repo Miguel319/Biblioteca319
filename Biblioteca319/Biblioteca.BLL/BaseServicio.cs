@@ -4,7 +4,7 @@ namespace Biblioteca.BLL
 {
     public class BaseServicio
     {
-        protected BibliotecaContext _context;
+        protected readonly BibliotecaContext _context;
 
         public BaseServicio(BibliotecaContext context) => _context = context;
     }

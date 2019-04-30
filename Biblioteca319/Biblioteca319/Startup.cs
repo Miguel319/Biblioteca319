@@ -36,6 +36,7 @@ namespace Biblioteca319
             #region Servicios BLL
             services.AddScoped<IActivo, ActivoServicio>();
             services.AddScoped<IEstatus, EstatusServicio>();
+            services.AddScoped<IPago, PagoServicio>();
             #endregion
 
 
