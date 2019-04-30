@@ -34,7 +34,7 @@ namespace Biblioteca319.Controllers
 
             return View(modelo);
         }
-        
+        /*
         public async Task<IActionResult> Detalles(int id)
         {
             var activo = await _obj.ObtenerPorId(id);
@@ -54,6 +54,8 @@ namespace Biblioteca319.Controllers
             };
 
             return View(modelo);
-        }
+
+
+        }*/
     }
 }

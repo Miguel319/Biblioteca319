@@ -21,6 +21,7 @@ html {
 .border-top {
   border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
   border-bottom: 1px solid #e5e5e5;
 }
@@ -43,15 +44,11 @@ html {
 
 body {
   /* Margin bottom by footer height */
-  /*margin-bottom: 60px;*/
-    padding-top: 50px;
-    padding-bottom: 20px;
+  margin-bottom: 60px;
+    /*padding-top: 50px;*/
+    /*padding-bottom: 20px;*/
 }
 
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
 .footer {
   position: absolute;
   bottom: 0;

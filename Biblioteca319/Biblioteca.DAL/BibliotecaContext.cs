@@ -17,5 +17,7 @@ namespace Biblioteca.DAL
        public DbSet<Estatus> Estatus { get; set; }
        public DbSet<Activo> Activos { get; set; }
        public DbSet<Retencion> Retenciones { get; set; }
+       public DbSet<Tarjeta> Tarjetas { get; set; }
+
     }
 }
