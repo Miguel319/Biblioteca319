@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Biblioteca.DAL;
 using Biblioteca319.Models.Catalogo;
+using Biblioteca319.Models.PagoModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Biblioteca319.Controllers
@@ -9,8 +10,13 @@ namespace Biblioteca319.Controllers
     public class CatalogoController : Controller
     {
         private readonly IActivo _obj;
+        private readonly IPago _pago;
 
-        public CatalogoController(IActivo obj) => _obj = obj;
+        public CatalogoController(IActivo obj, IPago pago)
+        {
+            _obj = obj;
+            _pago = pago;
+        }
 
         public async Task<IActionResult> Index()
         {
@@ -34,15 +40,23 @@ namespace Biblioteca319.Controllers
 
             return View(modelo);
         }
-        /*
+
         public async Task<IActionResult> Detalles(int id)
         {
             var activo = await _obj.ObtenerPorId(id);
 
+            var congelamientosActuales = _pago.ObtenerCongelamientosActuales(id)
+                .Select(x => new RetencionModel
+                {
+                   RetencionPuesta = _pago.ObtenerCongelamientoPuesto(x.Id).ToString("d"),
+                   NombreCliente = _pago.ObtenerClienteCongelamientoActual(x.Id)
+                });
+
             var modelo = new ActivoDetalleModel
             {
-                Id = id,
+                Id = activo.Id,
                 Titulo = activo.Titulo,
+                Tipo = _obj.ObtenerTipo(id),
                 Anio = activo.Anio,
                 Costo = activo.Costo,
                 Estatus = activo.Estatus.Nombre,
@@ -50,12 +64,68 @@ namespace Biblioteca319.Controllers
                 AutorODirector = _obj.ObtenerAutorODirector(id),
                 UbicacionActual = _obj.ObtenerUbicacionActual(id).Nombre,
                 IndiceDewey = _obj.ObtenerIndiceDewey(id),
-                ISBN = _obj.ObtenerISBN(id)
+                PagosHistorial = _pago.ObtenerPagosHistorial(id),
+                ISBN = _obj.ObtenerISBN(id),
+                UltimoPago = _pago.ObtenerUltimoPago(id),
+                NombreCliente = _pago.ObtenerClientePagoActual(id),
+                RetencionesActuales = congelamientosActuales
             };
 
             return View(modelo);
+        }
 
+        public async Task<IActionResult> Pagar(int id)
+        {
+            var activo = await _obj.ObtenerPorId(id);
 
-        }*/
+            var modelo = new PagoModel
+            {
+                ActivoId = id,
+                ImagenUrl = activo.ImagenUrl,
+                Titulo = activo.Titulo,
+                TarjetaId = 0,
+                EstaPago = _pago.EstaPago(id)
+            };
+
+            return View(modelo);
+        }
+        [HttpPost]
+        public IActionResult Pagar(int activoId, int tarjetaId)
+        {
+            _pago.PagarArticulo(activoId, tarjetaId);
+            return RedirectToAction("Detalles", new { id = activoId });
+        }
+
+        public async  Task<IActionResult> Congelamiento(int id)
+        {
+            var activo = await _obj.ObtenerPorId(id);
+
+            var modelo = new PagoModel
+            {
+                ActivoId = id,
+                ImagenUrl = activo.ImagenUrl,
+                Titulo = activo.Titulo,
+                TarjetaId = 0,
+                EstaPago = _pago.EstaPago(id),
+                NumCongelamientos = _pago.ObtenerCongelamientosActuales(id).Count()
+            };
+
+            return View(modelo);
+        }
+
+        public IActionResult MarcarComoPerdido(int activoId)
+        {
+            _pago.MarcarComoPerdido(activoId);
+            return RedirectToAction("Detalles", new {id = activoId});
+        }
+
+     
+
+        [HttpPost]
+        public IActionResult Congelar(int activoId, int tarjetaId)
+        {
+            _pago.Congelar(activoId, tarjetaId);
+            return RedirectToAction("Detalles", new { id = activoId});
+        }
     }
 }

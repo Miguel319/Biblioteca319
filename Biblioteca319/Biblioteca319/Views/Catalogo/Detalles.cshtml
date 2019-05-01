@@ -77,3 +77,63 @@
         </div>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <h4>Historial de pagos</h4>
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Fecha de préstamo</th>
+                <th>Fecha de retorno</th>
+                <th>Id tarjeta</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var pago in @Model.PagosHistorial)
+            {
+                <tr>
+                    <td>
+                        @pago.Pago
+                    </td>
+                    <td>
+                        @pago.Facturado
+                    </td>
+                    <td>
+                        @pago.Tarjeta.Id
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-lg-6">
+        <h4>Congelamientos actuales</h4>
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>
+                    Fecha de congelamiento
+                </th>
+                <th>
+                    Cliente
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+                @foreach(var congelamiento in @Model.RetencionesActuales)
+                {
+                    <tr>
+                        <td>
+                            @congelamiento.RetencionPuesta
+                        </td>
+                        <td>
+                            @congelamiento.NombreCliente
+                        </td>
+                    </tr>        
+                }
+            </tbody>
+        </table>
+    </div>
+    
+</div>

@@ -89,10 +89,6 @@ h1, h2 {
     font-family: 'Amaranth', sans-serif;
 }
 
-p {
-    font-family: 'Lateef', cursive;
-}
-
 .pagina-heading {
     color: #e9e8e7;
 }
@@ -207,7 +203,8 @@ p {
 }
 
 #articuloTitulo {
-    font-size: 1.6em;
+    font-size: 1.7em;
+    font-weight: bold;
 }
 
 #articuloEstatus {

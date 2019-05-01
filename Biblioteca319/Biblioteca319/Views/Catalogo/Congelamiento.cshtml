@@ -1,0 +1,40 @@
+﻿@model Biblioteca319.Models.PagoModel.PagoModel
+
+@{
+    ViewData["Title"] = "Congelamiento";
+}
+
+<div class="container">
+    <div class="header clearfix detalleHeading">
+        <h2 class="text-muted"> artículo de biblioteca</h2>
+    </div>
+
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-3">
+                <div>
+                    <p id="articuloTitulo">@Model.Titulo</p>
+                    <img class="detalleImagen" src="@Model.ImagenUrl" />
+                </div>
+            </div>
+            <div class="col-md-9">
+                <p>
+                    Este artículo tiene @Model.NumCongelamientos reservaciones en espera.
+                </p>
+                @using (Html.BeginForm("Congelar", "Catalogo", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.HiddenFor(x => x.ActivoId)
+                    <div>
+                        Por favor, inserte el Id de la tarjeta
+                        @Html.TextBoxFor(x => x.TarjetaId)
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-info btn-lg">Congelar</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

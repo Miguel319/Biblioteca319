@@ -17,7 +17,7 @@ namespace Biblioteca319.Models.Catalogo
         public string UbicacionActual { get; set; }
         public string ImagenUrl { get; set; }
         public string NombreCliente { get; set; }
-        public Pago UltimoPago { get; set; }
+        public BibliotecaBOL.Pago UltimoPago { get; set; }
         public IEnumerable<PagosHistorial> PagosHistorial { get; set; }
         public IEnumerable<RetencionModel> RetencionesActuales { get; set; }
     }

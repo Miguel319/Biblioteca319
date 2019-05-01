@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca319", "Biblioteca319\Biblioteca319.csproj", "{57BF56BD-5119-4758-AE52-F870A78E3116}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteca.BOL", "Biblioteca.BOL\Biblioteca.BOL.csproj", "{DB435E9F-EA04-46E7-B7FC-26B8A5E1B110}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca.BOL", "Biblioteca.BOL\Biblioteca.BOL.csproj", "{DB435E9F-EA04-46E7-B7FC-26B8A5E1B110}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteca.DAL", "Biblioteca.DAL\Biblioteca.DAL.csproj", "{CA275965-0E1D-4424-9217-8996FB1628BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca.DAL", "Biblioteca.DAL\Biblioteca.DAL.csproj", "{CA275965-0E1D-4424-9217-8996FB1628BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteca.BLL", "Biblioteca.BLL\Biblioteca.BLL.csproj", "{29E35E32-E924-462F-8523-5026C7010D95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca.BLL", "Biblioteca.BLL\Biblioteca.BLL.csproj", "{29E35E32-E924-462F-8523-5026C7010D95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

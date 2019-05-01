@@ -18,7 +18,7 @@ namespace Biblioteca.DAL
         void PagarArticulo(int activoId, int tarjetaId);
         void FacturarArticulo(int activoId, int tarjetaId);
         string ObtenerClientePagoActual(int id);
-
+        bool EstaPago(int id);
 
 
         void Congelar(int activoId, int tarjetaId);

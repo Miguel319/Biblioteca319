@@ -73,7 +73,7 @@ namespace Biblioteca.BLL
             return ahora.AddDays(30);
         }
 
-        private bool EstaPago(int activoId) => _context
+        public bool EstaPago(int activoId) => _context
                 .Pagos.Where(x => x.Activo.Id == activoId).Any();
 
         public void FacturarArticulo(int activoId, int tarjetaId)
@@ -194,14 +194,14 @@ namespace Biblioteca.BLL
             _context.SaveChanges();
         }
 
-        private void ActualizarEstatusDeActivo(int id, string disponible)
+        private void ActualizarEstatusDeActivo(int id, string nuevoEstatus)
         {
             var estatus = _context.Activos.FirstOrDefault(x => x.Id == id);
 
             _context.Update(estatus);
 
             estatus.Estatus = _context.Estatus
-                .FirstOrDefault(x => x.Nombre == "Disponible");
+                .FirstOrDefault(x => x.Nombre == nuevoEstatus);
         }
 
         private void RemoverHistorialDePagosExistentes(int id)
@@ -249,7 +249,7 @@ namespace Biblioteca.BLL
                 .Include(x => x.Tarjeta)
                 .FirstOrDefault(x => x.Tarjeta.Id == tarjetaId);
 
-            return cliente?.Nombre+ " "+cliente.Apellido;
+            return cliente?.Nombre+ " "+cliente?.Apellido;
         }
 
         private Pago ObtenerPagoPorIdActivo(int id) =>
