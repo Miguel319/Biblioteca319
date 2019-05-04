@@ -12,11 +12,8 @@ namespace Biblioteca.BLL
     {
         public PagoServicio(BibliotecaContext context) : base(context) { }
 
-
         public async Task<IEnumerable<Pago>> Todos() => await _context.Pagos
             .ToListAsync();
-
-
 
         public async Task<Pago> ObtenerPorId(int id) => await _context.Pagos
             .FindAsync(id);
@@ -68,15 +65,12 @@ namespace Biblioteca.BLL
             _context.SaveChanges();
         }
 
-        private DateTime ObtenerFechaPago(in DateTime ahora)
-        {
-            return ahora.AddDays(30);
-        }
+        private DateTime ObtenerFechaPago(in DateTime ahora) => ahora.AddDays(30);
 
         public bool EstaPago(int activoId) => _context
                 .Pagos.Where(x => x.Activo.Id == activoId).Any();
 
-        public void FacturarArticulo(int activoId, int tarjetaId)
+        public void FacturarArticulo(int activoId)
         {
             var ahora = DateTime.Now;
 
@@ -95,13 +89,14 @@ namespace Biblioteca.BLL
             /*Si hay congelamientos, vincular artículo con la última tarjeta
               con un congelamiento*/
             if (congelamientosActuales.Any())
+            {
                 VincularUltimoCongelamiento(activoId, congelamientosActuales);
+                return;
+            }
             //Actualizar estatus a disponible
-             ActualizarEstatusDeActivo(activoId, "Disponible");
+            ActualizarEstatusDeActivo(activoId, "Disponible");
              _context.SaveChanges();
         }
-
-      
 
         private void VincularUltimoCongelamiento(int activoId, IQueryable<Retencion> congelamientosActuales)
         {
@@ -127,6 +122,7 @@ namespace Biblioteca.BLL
             var ahora = DateTime.Now;
 
             var activo = _context.Activos
+                .Include(x => x.Estatus)
                 .FirstOrDefault(x => x.Id == activoId);
 
             var tarjeta = _context.Tarjetas
@@ -196,7 +192,8 @@ namespace Biblioteca.BLL
 
         private void ActualizarEstatusDeActivo(int id, string nuevoEstatus)
         {
-            var estatus = _context.Activos.FirstOrDefault(x => x.Id == id);
+            var estatus = _context.Activos
+                .FirstOrDefault(x => x.Id == id);
 
             _context.Update(estatus);
 
@@ -236,12 +233,12 @@ namespace Biblioteca.BLL
 
         public string ObtenerClientePagoActual(int id)
         {
-            var pago = ObtenerPagoPorIdActivo(id);
+            var pago = _context.Pagos
+                .Include(x => x.Activo)
+                .Include(x => x.Tarjeta)
+                .FirstOrDefault(x => x.Tarjeta.Id == id);
 
-            if (pago == null)
-            {
-                return "";
-            }
+            if (pago == null) return "Este artículo no está pago.";
 
             var tarjetaId = pago.Tarjeta.Id;
 
@@ -249,7 +246,7 @@ namespace Biblioteca.BLL
                 .Include(x => x.Tarjeta)
                 .FirstOrDefault(x => x.Tarjeta.Id == tarjetaId);
 
-            return cliente?.Nombre+ " "+cliente?.Apellido;
+            return cliente.Nombre+ " "+cliente.Apellido;
         }
 
         private Pago ObtenerPagoPorIdActivo(int id) =>

@@ -1,9 +1,9 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using Biblioteca.DAL;
+﻿using Biblioteca.DAL;
 using Biblioteca319.Models.Catalogo;
 using Biblioteca319.Models.PagoModel;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Biblioteca319.Controllers
 {
@@ -83,7 +83,7 @@ namespace Biblioteca319.Controllers
                 ActivoId = id,
                 ImagenUrl = activo.ImagenUrl,
                 Titulo = activo.Titulo,
-                TarjetaId = 0,
+                TarjetaId = "",
                 EstaPago = _pago.EstaPago(id)
             };
 
@@ -96,7 +96,14 @@ namespace Biblioteca319.Controllers
             return RedirectToAction("Detalles", new { id = activoId });
         }
 
-        public async  Task<IActionResult> Congelamiento(int id)
+        public IActionResult Facturar(int id)
+        {
+            _pago.FacturarArticulo(id);
+            return RedirectToAction("Detalles", new {id = id});
+
+        }
+
+        public async  Task<IActionResult> Congelar(int id)
         {
             var activo = await _obj.ObtenerPorId(id);
 
@@ -105,7 +112,7 @@ namespace Biblioteca319.Controllers
                 ActivoId = id,
                 ImagenUrl = activo.ImagenUrl,
                 Titulo = activo.Titulo,
-                TarjetaId = 0,
+                TarjetaId = "",
                 EstaPago = _pago.EstaPago(id),
                 NumCongelamientos = _pago.ObtenerCongelamientosActuales(id).Count()
             };
@@ -113,19 +120,17 @@ namespace Biblioteca319.Controllers
             return View(modelo);
         }
 
-        public IActionResult MarcarComoPerdido(int activoId)
-        {
-            _pago.MarcarComoPerdido(activoId);
-            return RedirectToAction("Detalles", new {id = activoId});
-        }
-
-     
-
         [HttpPost]
         public IActionResult Congelar(int activoId, int tarjetaId)
         {
             _pago.Congelar(activoId, tarjetaId);
-            return RedirectToAction("Detalles", new { id = activoId});
+            return RedirectToAction("Detalles", new { id = activoId });
+        }
+
+        public IActionResult MarcarComoPerdido(int activoId)
+        {
+            _pago.MarcarComoPerdido(activoId);
+            return RedirectToAction("Detalles", new {id = activoId});
         }
     }
 }

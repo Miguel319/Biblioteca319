@@ -38,7 +38,7 @@
 
         @if (Model.Estatus == "Pago")
         {
-            <p id="articuloCliente">Pagado por: @Model.NombreCliente</p>
+            <p>Pagado por: @Model.NombreCliente</p>
             <p>
                 <a class="btn btn-lg btn-success" role="button" asp-controller="Catalogo"
                    asp-action="Facturar" asp-route-id="@Model.Id">Facturar</a>

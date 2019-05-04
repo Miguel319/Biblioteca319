@@ -16,7 +16,7 @@ namespace Biblioteca.DAL
 
         Task<Pago> ObtenerPorId(int id);
         void PagarArticulo(int activoId, int tarjetaId);
-        void FacturarArticulo(int activoId, int tarjetaId);
+        void FacturarArticulo(int activoId);
         string ObtenerClientePagoActual(int id);
         bool EstaPago(int id);
 

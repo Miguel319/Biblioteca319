@@ -2,7 +2,7 @@
 {
     public class PagoModel
     {
-        public int TarjetaId { get; set; }
+        public string TarjetaId { get; set; }
         public string Titulo { get; set; }
         public int ActivoId { get; set; }
         public string ImagenUrl { get; set; }
