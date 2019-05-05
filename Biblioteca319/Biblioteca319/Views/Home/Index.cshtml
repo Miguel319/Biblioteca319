@@ -1,8 +1,58 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Página principal";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<h3 class="text-center">Biblioteca319</h3>
+        
+
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--4-col">
+        <div class="demo-card-square mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title mdl-card--expand" id="catalogo">
+                <h2 class="mdl-card__title-text homeLabel">Catálogo de librería</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                Ver y manejar artículos de librería
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a class="mdl-button mdl-button--colored" asp-controller="Catalogo" asp-action="Index">
+                    Ver catálogo
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mdl-cell mdl-cell--4-col">
+        <div class="demo-card-square mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title mdl-card--expand" id="clientes">
+                <h2 class="mdl-card__title-text homeLabel">Clientes</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                Visualizar y manejar datos de clientes
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a class="mdl-button mdl-button--colored" asp-action="Index" asp-controller="Cliente">
+                    Visualizar clientes
+                </a>
+            </div>
+        </div>
+    </div>
+    
+<div class="mdl-cell mdl-cell--4-col">
+    <div class="demo-card-square mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title mdl-card--expand" id="sucursales">
+            <h2 class="mdl-card__title-text homeLabel">Sucursales</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            Visualizar y manejar sucursales de la Biblioteca 319
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <a class="mdl-button mdl-button--colored" asp-controller="Sucursal" asp-action="Index">
+                Visualizar sucursales
+            </a>
+        </div>
+    </div>
 </div>
+</div>
+

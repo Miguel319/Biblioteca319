@@ -9,6 +9,7 @@ a.navbar-brand {
 
 /* Sticky footer styles
 -------------------------------------------------- */
+
 html {
   font-size: 14px;
 }
@@ -44,9 +45,9 @@ html {
 
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
-    /*padding-top: 50px;*/
-    /*padding-bottom: 20px;*/
+ /* margin-bottom: 60px;*/
+   /* padding-top: 50px;*/
+    padding-bottom: 20px;
 }
 
 .footer {
@@ -85,7 +86,7 @@ logo >:hover {
     margin: 10px auto;
 }
 
-h1, h2 {
+h1, h2, h3 {
     font-family: 'Amaranth', sans-serif;
 }
 
@@ -131,8 +132,9 @@ h1, h2 {
 }
 
 .homeLabel {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(255,255,255,0.7);
     padding: 4px;
+    color: #fff;
 }
 
 #catalogo {
@@ -152,7 +154,7 @@ h1, h2 {
 }
 
 #clientes {
-    background: url('img/cliente.png') bottom left 15% no-repeat #555;
+    background: url('/img/cliente.png') bottom left 15% no-repeat #555;
 }
 
 .sucursalInfo {
@@ -160,7 +162,7 @@ h1, h2 {
 }
 
 #sucursales {
-    background: url('img/sucursales.png') bottom right 15% no-repeat #555;
+    background: url('/img/sucursales.png') bottom right 15% no-repeat #555;
 }
 
 #activos {

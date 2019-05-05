@@ -14,20 +14,20 @@
 
 
 <div class="jumbotron container">
-    
 <div class="row">
+    
     <div class="col-md-4">
         <div>
             <img class="detalleImagen" src="@Model.ImagenUrl" />
         </div>
     </div>
+
     <div class="col-md-4">
         <p id="articuloTitulo">@Model.Titulo</p>
         <p id="articuloAutor">@Model.AutorODirector</p>
         <p id="articuloEstatus">@Model.Estatus</p>
         <p id="articuloTipo">@Model.Tipo</p>
         <p id="articuloUbicacion">@Model.UbicacionActual</p>
-
 
         @if (Model.Estatus == "Perdido")
         {
