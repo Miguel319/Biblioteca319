@@ -1,0 +1,86 @@
+﻿@model Biblioteca319.Models.Cliente.ClienteDetalleModelo
+
+@{
+    ViewData["Title"] = "Detalles";
+}
+
+
+<div>
+    <div class="header clearfix detalleHeading">
+        <h2 class="text-muted">Información del cliente</h2>
+    </div>
+
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-4">
+                <div>
+                    <h2>@Model.NombreCompleto</h2>
+                
+                    <div class="clienteContacto">
+                        <div id="clienteTar">Id Tarjeta: @Model.TarjetaId</div>
+                        <div id="clienteDir">Dirección @Model.Direccion</div>
+                        <div id="clienteTel">Teléfono: @Model.Telefono</div>
+                        <div id="clienteFecha">Miembro desde: @Model.MiembroDesde</div>
+                        <div id="clienteSucursal">Sucursal asociada: @Model.SucursalALaQuePertenece</div>
+                    
+                        @if (@Model.Cargos > 0)
+                        {
+                            <div id="clienteTieneCargos">Cargos actuales: $@Model.Cargos</div>
+                        }
+                        else
+                        {
+                            <div id="clienteSinCargos">Actualmente no se presentan cargos.</div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                @if (@Model.ActivosPagos.Any())
+                {
+                    <div id="activosCliente">
+                        <ul>
+                            @foreach (var pago in @Model.ActivosPagos)
+                            {
+                                <li>
+                                    @pago.Activo.Titulo - (Id Activo: @Model.Id)
+                                    <ul>
+                                        <li>
+                                            Desde: @pago.Desde
+                                        </li>
+                                        <li>
+                                            Hasta: @pago.Hasta
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                }
+                else
+                {
+                    <div>No se presentan artículos pagos.</div>
+                }
+            </div>
+            <div class="col-md-4">
+                <h4>Activos congelados actualmente:</h4>
+
+                @if (@Model.Congelamientos.Any())
+                {
+                    <div id="clienteCargos">
+                        <ul>
+                            @foreach(var congelamiento in @Model.Congelamientos)
+                            {
+                                <li>@congelamiento.Activo.Titulo - Puesto en: @congelamiento.RetencionPuesta.ToString("dd-MM-yy - HH:mm")</li>
+                            }
+                        </ul>
+                    </div>
+                }
+                else
+                {
+                    <div>No hay artículos retenidos.</div>
+                }
+            </div>
+        </div>
+        </div>
+</div>

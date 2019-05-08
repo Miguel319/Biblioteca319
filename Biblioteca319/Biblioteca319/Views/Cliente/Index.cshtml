@@ -1,0 +1,47 @@
+﻿@model Biblioteca319.Models.Cliente.ClienteIndexModel
+
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+<h3 class="text-center">Clientes</h3>
+
+<div id="clienteId">
+    <table class="laTbl col-md-12 mdl-data-table mdl-js-data mdl-data-table--selectable mdl-shadow--2dp tablaPersonalizada" id="clienteIndexTbl">
+        <thead>
+        <tr>
+            <th>Perfil</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Id Tarjeta</th>
+            <th>Cargos</th>
+            <th>Sucursal asociada</th>
+        </tr>
+        </thead>
+        <tbody>
+            @foreach(var cliente in @Model.Clientes)
+            {
+                <tr>
+                    <td>
+                        <a asp-controller="Cliente" asp-action="Detalles" asp-route-id="@cliente.Id">Perfil</a>
+                    </td>
+                    <td>
+                        @cliente.Nombre
+                    </td>
+                    <td>
+                        @cliente.Apellido
+                    </td>
+                    <td>
+                        @cliente.TarjetaId
+                    </td>
+                    <td>
+                        @cliente.Cargos
+                    </td>
+                    <td>
+                        @cliente.SucursalALaQuePertenece
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
