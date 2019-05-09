@@ -38,6 +38,7 @@ namespace Biblioteca319
             services.AddScoped<IEstatus, EstatusServicio>();
             services.AddScoped<IPago, PagoServicio>();
             services.AddScoped<ICliente, ClienteServicio>();
+            services.AddScoped<ISucursal, SucursalServicio>();
             #endregion
 
 

@@ -1,0 +1,59 @@
+﻿@model Biblioteca319.Models.Sucursal.SucursalDetalleModel
+
+@{
+    ViewData["Title"] = "Detalles";
+}
+
+<h1>Detalles</h1>
+
+
+<div>
+    <div class="header clearfix detalleHeading">
+        <h2 class="text-muted">Información de la sucursal</h2>
+    </div>
+    <div class="jumbotron">
+        <div class="row">
+            <img src="@Model.ImagenUrl"/>
+        </div>
+        <div class="row sucursalInfo">
+            <div class="col-md-8">
+                <h2>@Model.Nombre</h2>
+                <div class="sucursalContacto">
+                    <div class="sucursalDir">Dirección: @Model.Direccion</div>
+                    <div class="sucursalTel">Teléfono: @Model.Telefono</div>
+                </div>
+                <div id="sucursalDescripcion">
+                    <p class="caption">@Model.Descripcion</p>
+                </div>
+                <div id="sucursalHoras">
+                    <ul>
+                        @foreach(var dia in @Model.HorasAbiertas)
+                        {
+                            <li>@dia</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <table>
+                    <tr>
+                        <td class="articuloLbl">Fecha de apertura</td>
+                        <td class="articuloValor">@Model.FechaApertura</td>
+                    </tr>
+                    <tr>
+                        <td class="articuloLbl">Número de clientes</td>
+                        <td class="articuloValor">@Model.NumClientes</td>
+                    </tr>
+                    <tr>
+                        <td class="articuloLbl">Número de artículos</td>
+                        <td class="articuloValor">@Model.NumActivos</td>
+                    </tr>
+                    <tr>
+                        <td class="articuloLbl">Valor de los artículos</td>
+                        <td class="articuloValor">@Model.TotalActivosValor</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

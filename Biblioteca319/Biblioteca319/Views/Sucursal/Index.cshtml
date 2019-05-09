@@ -1,0 +1,31 @@
+﻿@model Biblioteca319.Models.Sucursal.SucursalIndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="sucursalIndex">
+    <table class="mdl-data-table mdl-js-data mdl-data-table--selectable mdl-shadow--2dp" id="sucursalIndexTbl">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Abierta ahora</th>
+            <th>Número de activos</th>
+            <th>Número de clientes</th>
+        </tr>
+        </thead>
+        <tbody>
+            @foreach (var sucursal in Model.Sucursales)
+            {
+                <tr>
+                    <td class="negritaId">
+                        <a asp-controller="Sucursal" asp-action="Detalles" asp-route-id="@sucursal.Id">@sucursal.Nombre</a>
+                    </td>
+                    <td>@sucursal.EstaAbierta</td>
+                    <td>@sucursal.NumActivos</td>
+                    <td>@sucursal.NumClientes</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
